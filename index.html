@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card - Dark Theme</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a; /* Dark blue background */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #e2e8f0;
+        }
+
+        a{
+          text-decoration: none;
+          color: #0f172a;
+        }
+
+        .card {
+            background: #1e293b; /* Slightly lighter than background */
+            max-width: 1000px;
+            width: 100%;
+            padding: 24px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .box {
+            background: #2d3748; /* Card background */
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #4a5568;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Profile Section */
+        .profile {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid #4ade80;
+        }
+
+        .profile-info h1 {
+            font-size: 24px;
+            margin: 4px 0;
+            color: #4ade80; /* Vibrant green */
+        }
+
+        .profile-info p {
+            color: #94a3b8;
+        }
+
+        /* Education Section */
+        .education {
+            grid-column: span 1;
+        }
+
+        .education-item {
+            margin: 12px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .education-item strong {
+            color: #4ade80;
+        }
+
+        .education-item span {
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+
+        /* Language Section */
+        .languages {
+            grid-column: span 1;
+        }
+
+        .language-bar {
+            margin: 12px 0;
+        }
+
+        .bar-container {
+            width: 100%;
+            height: 8px;
+            background: #1e293b;
+            border-radius: 4px;
+            margin-top: 4px;
+        }
+
+        .bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4ade80, #2dd4bf);
+            border-radius: 4px;
+        }
+
+        .bar.english { width: 100%; }
+        .bar.hindi { width: 100%; }
+
+        /* Projects Section */
+        .projects {
+            grid-column: span 2;
+        }
+
+        .project-item {
+            margin: 12px 0;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #4a5568;
+        }
+
+        .project-item.featured {
+            background: linear-gradient(135deg, #4ade80 0%, #2dd4bf 100%);
+            color: #0f172a;
+            border: none;
+        }
+
+        .tags {
+            margin-top: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 14px;
+            margin-right: 8px;
+            background: rgba(74, 222, 128, 0.1);
+            color: #4ade80;
+        }
+
+        .featured .tag {
+            background: rgba(15, 23, 42, 0.2);
+            color: #0f172a;
+        }
+
+        /* Skills Section */
+        .skills {
+            grid-column: span 1;
+        }
+
+        .skills h2 {
+            margin: 16px 0 12px 0;
+            color: #4ade80;
+        }
+
+        .skills h2:first-child {
+            margin-top: 0;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(74, 222, 128, 0.1);
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 14px;
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            grid-column: span 3;
+            background: linear-gradient(135deg, #4ade80 0%, #2dd4bf 100%);
+            color: #0f172a;
+        }
+
+        .contact-info {
+            margin-top: 12px;
+            display: flex;
+            gap: 16px;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects, .contact {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="grid-container">
+            <!-- Profile Section -->
+            <div class="box profile">
+                <img src="assets/linkedinprofile.jpg" alt="Profile Photo">
+                <div class="profile-info">
+                    <p>Hello 👋 I'm</p>
+                    <h1>Faizan</h1>
+                    <p>Full-stack Web Developer</p>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="box education">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>Methodist College Of Engineering</strong>
+                    </div>
+                    <span>B.E in AI & DS</span>
+                    <div><span>Nov 2021 - Aug 2025</span></div>
+                </div>
+            </div>
+
+            <!-- Languages Section -->
+            <div class="box languages">
+                <h2>Languages</h2>
+                <div class="language-bar">
+                    <div class="bar-label">English</div>
+                    <div class="bar-container">
+                        <div class="bar english"></div>
+                    </div>
+                </div>
+                <div class="language-bar">
+                    <div class="bar-label">Hindi/Urdu</div>
+                    <div class="bar-container">
+                        <div class="bar hindi"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="box projects">
+                <h2>Experience</h2>
+                <div class="project-item featured">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>Blog Platform [Python, Django, MySQL, HTML, CSS, JavaScript]</strong>
+                        <span>Sep 2024 - Oct 2024</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">#personalProject</span>
+                        <span class="tag">#backend</span>
+                        <span class="tag">#blog</span>
+                    </div>
+                </div>
+                <!-- Other projects with proper styling -->
+                <div class="project-item">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>ToDo List [Python, Django, MySQL, HTML, CSS]</strong>
+                        <span>Sep 2024 - Oct 2024</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">#personalProject</span>
+                        <span class="tag">#todoList</span>
+                        <span class="tag">#crud</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>Real-time Weather forecasting [Python, Django, OpenWeatherAPI]</strong>
+                        <span>Sep 2024 - Oct 2024</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">#personalProject</span>
+                        <span class="tag">#openweatherapi</span>
+                        <span class="tag">#caching</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>Scrapping Product reviews [Python, BeautifulSoup]</strong>
+                        <span>Sep 2024 - Oct 2024</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">#collegeProject</span>
+                        <span class="tag">#webscrapping</span>
+                        <span class="tag">#dataanalysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="box skills">
+                <h2>Programming</h2>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">GSAP</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">Bootstrap</span>
+                </div>
+
+                <h2>Databases & Engineering</h2>
+                <div class="skill-tags">
+                    <span class="skill-tag">Django ORM</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">Notion</span>
+                    <span class="skill-tag">Miro</span>
+                    <span class="skill-tag">Canva</span>
+                </div>
+
+                <h2>Data Analytics</h2>
+                <div class="skill-tags">
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">matplotlib</span>
+                    <span class="skill-tag">PowerBI</span>
+                    <span class="skill-tag">Tableau</span>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="box contact">
+                <h2>Let's chat! I'm ready to work on exciting projects</h2>
+                <div class="contact-info">
+                    <span>faizanmohammed416@gmail.com</span> | 
+                    <span>+91 6302823995</span> | 
+                    <a href="https://github.com/FaizanMohd5"><span><i class="ri-github-fill"></i>GitHub</span></a> | 
+                    <a href="https://www.linkedin.com/in/farukhfaizan/"><span><i class="ri-linkedin-box-fill"></i>LinkedIn</span></a>
+                  </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
